@@ -19,5 +19,3 @@ target/
 *.ear
 target/
 
-# Local properties
-application.properties
