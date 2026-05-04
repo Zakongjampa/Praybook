@@ -1,0 +1,23 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### VS Code ###
+.vscode/
+
+# Compiled class file 
+*.class
+
+## Log files 
+*.class
+
+# package file 
+*.jar
+*.war
+*.ear
+target/
+
+# Local properties
+application.properties
