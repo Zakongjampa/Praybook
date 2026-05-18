@@ -1,6 +1,7 @@
 package com.prayer.demo.utility;
 
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -28,6 +29,7 @@ public class Prayer {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "prayer")
     private List<LikedPrayer> likedByUsers = new ArrayList<LikedPrayer>();
 

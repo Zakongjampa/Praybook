@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 public class LoggingAspect {
     private static final Logger log = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Pointcut("execution( * com.prayer.demo.service.*.*(..))")
+    @Pointcut("execution(* com.prayer.demo.service..*.*(..))")
     public void serviceLayer() {
 
     }

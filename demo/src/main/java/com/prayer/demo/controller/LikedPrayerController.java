@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prayer.demo.Service.LikecPrayerService;
+import com.prayer.demo.utility.Prayer;
 
 @CrossOrigin(origins = "http://localhost:5175")
 @RequestMapping("/liked")
@@ -40,6 +41,11 @@ public class LikedPrayerController {
     public ResponseEntity<List<Long>> getLikedByUser(@PathVariable Long userId) {
         List<Long> likedIds = service.likedByUser(userId);
         return ResponseEntity.ok(likedIds);
+    }
+
+    @GetMapping("/top-liked")
+    public List<Prayer> getTopLiked() {
+        return service.getTop10MostLikedPrayers();
     }
 
 }

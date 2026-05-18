@@ -2,6 +2,7 @@ package com.prayer.demo.Service;
 
 import java.util.List;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,6 +71,10 @@ public class LikecPrayerService {
     private Prayer getPrayerOrThrow(Long prayerId) {
         return prayerRepo.findById(prayerId)
                 .orElseThrow(() -> new RuntimeException("Prayer Not Found"));
+    }
+
+    public List<Prayer> getTop10MostLikedPrayers() {
+        return likedRepo.findMostLikedPrayers(PageRequest.of(0, 10));
     }
 
 }
