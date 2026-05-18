@@ -2,6 +2,9 @@ package com.prayer.demo.controller;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,10 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prayer.demo.Service.PrayerService;
 import com.prayer.demo.dto.PrayerDTO;
+import com.prayer.demo.utility.Prayer;
 
 import jakarta.validation.Valid;
 
@@ -49,6 +54,15 @@ public class PrayerController {
     public ResponseEntity<List<PrayerDTO>> getPrayers() {
         List<PrayerDTO> prayers = ps.getAllPrayers();
         return ResponseEntity.ok(prayers);
+    }
+
+    @GetMapping("/prayerList")
+    public Page<Prayer> getTopPrayers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ps.getPrayers(pageable);
+
     }
 
     // Update

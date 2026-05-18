@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+.claw
 ### VS Code ###
 .vscode/
 
@@ -19,3 +20,4 @@ target/
 *.ear
 target/
 
+".DS_Store" 

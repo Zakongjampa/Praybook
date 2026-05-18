@@ -7,6 +7,8 @@ import com.prayer.demo.utility.Prayer;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import com.prayer.demo.Repo.PrayerRepo;
 
@@ -31,6 +33,10 @@ public class PrayerService {
                 .stream()
                 .map(PrayerMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public Page<Prayer> getPrayers(Pageable pageable) {
+        return repo.findAll(pageable);
     }
 
     // Get Prayer by id
