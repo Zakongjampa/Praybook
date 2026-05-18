@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.prayer.demo.Service.LikecPrayerService;
 import com.prayer.demo.utility.Prayer;
 
-@CrossOrigin(origins = "http://localhost:5175")
+@CrossOrigin(origins = { "http://localhost:5175", "https://prayer-frontend-eight.vercel.app" })
 @RequestMapping("/liked")
 @RestController
 public class LikedPrayerController {

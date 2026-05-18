@@ -20,7 +20,8 @@ import com.prayer.demo.dto.LoginRequestDTO;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:5175")
+@CrossOrigin(origins = { "http://localhost:5175", "https://prayer-frontend-eight.vercel.app" })
+
 @RestController
 public class UserController {
     UserService service;
