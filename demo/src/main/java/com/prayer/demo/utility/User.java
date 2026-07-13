@@ -1,7 +1,6 @@
 package com.prayer.demo.utility;
 
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
@@ -33,7 +32,10 @@ public class User {
     private String hashedPassword;
     private String email;
 
+    private boolean isAdmin;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<LikedPrayer> likedPrayer;
+
 }

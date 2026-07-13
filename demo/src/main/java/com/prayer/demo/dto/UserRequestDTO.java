@@ -1,6 +1,7 @@
 package com.prayer.demo.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,5 +29,8 @@ public class UserRequestDTO {
 
     @NotBlank(message = "Password is required")
     private String hashedPassword;
+
+    @NotNull(message = "required fill")
+    private boolean isAdmin;
 
 }
