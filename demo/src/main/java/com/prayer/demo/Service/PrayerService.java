@@ -35,6 +35,10 @@ public class PrayerService {
                 .collect(Collectors.toList());
     }
 
+    public List<String> getAllPrayerNames() {
+        return repo.findAllPrayerNames();
+    }
+
     public Page<Prayer> getPrayers(Pageable pageable) {
         return repo.findAll(pageable);
     }

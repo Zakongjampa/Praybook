@@ -57,6 +57,11 @@ public class PrayerController {
         return ResponseEntity.ok(prayers);
     }
 
+    @GetMapping("/prayer/names")
+    public ResponseEntity<List<String>> getPrayerNames() {
+        return ResponseEntity.ok(ps.getAllPrayerNames());
+    }
+
     @GetMapping("/prayerList")
     public Page<Prayer> getTopPrayers(
             @RequestParam(defaultValue = "0") int page,
