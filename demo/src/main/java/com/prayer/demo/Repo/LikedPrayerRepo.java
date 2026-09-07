@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.Query;
+import com.prayer.demo.dto.PrayerSummaryDTO;
 import com.prayer.demo.utility.LikedPrayer;
 import com.prayer.demo.utility.Prayer;
 import com.prayer.demo.utility.User;
@@ -17,6 +19,14 @@ public interface LikedPrayerRepo extends JpaRepository<LikedPrayer, Long> {
     long countByPrayer(Prayer prayer);
 
     List<LikedPrayer> findByUser(User user);
+
+    @Query("""
+            SELECT new com.prayer.demo.dto.PrayerSummaryDTO(l.prayer.number, l.prayer.name)
+            FROM LikedPrayer l
+            WHERE l.user.id = :userId
+            ORDER BY l.likedAt DESC
+            """)
+    List<PrayerSummaryDTO> findPrayerSummariesByUserId(@Param("userId") Long userId);
 
     @Query("""
             SELECT l.prayer

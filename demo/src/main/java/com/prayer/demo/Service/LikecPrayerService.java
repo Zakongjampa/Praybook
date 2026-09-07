@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.prayer.demo.Repo.LikedPrayerRepo;
 import com.prayer.demo.Repo.PrayerRepo;
 import com.prayer.demo.Repo.UserRepo;
+import com.prayer.demo.dto.PrayerSummaryDTO;
 import com.prayer.demo.utility.LikedPrayer;
 import com.prayer.demo.utility.Prayer;
 import com.prayer.demo.utility.User;
@@ -61,6 +62,11 @@ public class LikecPrayerService {
         // map to prayer ids only
         return all.stream().map(lp -> lp.getPrayer().getNumber())
                 .toList();
+    }
+
+    public List<PrayerSummaryDTO> likedPrayerSummariesByUser(Long userId) {
+        getUserOrThrow(userId);
+        return likedRepo.findPrayerSummariesByUserId(userId);
     }
 
     private User getUserOrThrow(Long userId) {

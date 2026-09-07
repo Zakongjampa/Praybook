@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prayer.demo.Service.LikecPrayerService;
+import com.prayer.demo.dto.PrayerSummaryDTO;
 import com.prayer.demo.utility.Prayer;
 
 @CrossOrigin(origins = { "http://localhost:5175", "https://prayer-frontend-eight.vercel.app" })
@@ -41,6 +42,11 @@ public class LikedPrayerController {
     public ResponseEntity<List<Long>> getLikedByUser(@PathVariable Long userId) {
         List<Long> likedIds = service.likedByUser(userId);
         return ResponseEntity.ok(likedIds);
+    }
+
+    @GetMapping("/{userId}/prayers")
+    public ResponseEntity<List<PrayerSummaryDTO>> getLikedPrayersByUser(@PathVariable Long userId) {
+        return ResponseEntity.ok(service.likedPrayerSummariesByUser(userId));
     }
 
     @GetMapping("/top-liked")

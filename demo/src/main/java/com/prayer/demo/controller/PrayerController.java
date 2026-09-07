@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.prayer.demo.Service.PrayerService;
 import com.prayer.demo.dto.PrayerDTO;
+import com.prayer.demo.dto.PrayerSummaryDTO;
 import com.prayer.demo.utility.Prayer;
 
 import jakarta.validation.Valid;
@@ -58,8 +59,8 @@ public class PrayerController {
     }
 
     @GetMapping("/prayer/names")
-    public ResponseEntity<List<String>> getPrayerNames() {
-        return ResponseEntity.ok(ps.getAllPrayerNames());
+    public ResponseEntity<List<PrayerSummaryDTO>> getPrayerNames() {
+        return ResponseEntity.ok(ps.getAllPrayerSummaries());
     }
 
     @GetMapping("/prayerList")

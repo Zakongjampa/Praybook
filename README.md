@@ -91,8 +91,13 @@ response bodies are used unless otherwise noted.
 Example response from `GET /prayer/names`:
 
 ```json
-["Morning Prayer", "Evening Prayer"]
+[
+	{"id": 1, "name": "Morning Prayer"},
+	{"id": 2, "name": "Evening Prayer"}
+]
 ```
+
+Use the returned `id` to fetch the selected prayer with `GET /prayer/{id}`.
 
 ### Users
 

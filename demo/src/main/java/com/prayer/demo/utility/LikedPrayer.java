@@ -9,6 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
@@ -25,7 +26,9 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "like_prayer", uniqueConstraints = {
+@Table(name = "like_prayer", indexes = {
+        @Index(name = "idx_like_prayer_user", columnList = "user_id")
+}, uniqueConstraints = {
         @UniqueConstraint(columnNames = { "prayer_id", "user_id" })
 })
 public class LikedPrayer {

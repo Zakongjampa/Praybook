@@ -1,6 +1,7 @@
 package com.prayer.demo.Service;
 
 import com.prayer.demo.dto.PrayerDTO;
+import com.prayer.demo.dto.PrayerSummaryDTO;
 import com.prayer.demo.mapper.PrayerMapper;
 import com.prayer.demo.utility.Prayer;
 
@@ -35,8 +36,8 @@ public class PrayerService {
                 .collect(Collectors.toList());
     }
 
-    public List<String> getAllPrayerNames() {
-        return repo.findAllPrayerNames();
+    public List<PrayerSummaryDTO> getAllPrayerSummaries() {
+        return repo.findAllPrayerSummaries();
     }
 
     public Page<Prayer> getPrayers(Pageable pageable) {
