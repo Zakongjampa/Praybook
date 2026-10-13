@@ -58,11 +58,19 @@ public class PrayerController {
         return ResponseEntity.ok(prayers);
     }
 
+    // Get : Prayer names only
     @GetMapping("/prayer/names")
     public ResponseEntity<List<PrayerSummaryDTO>> getPrayerNames() {
         return ResponseEntity.ok(ps.getAllPrayerSummaries());
     }
 
+    // Search : Prayer names
+    @GetMapping("/prayer/search")
+    public ResponseEntity<List<PrayerSummaryDTO>> searchPrayers(@RequestParam String query) {
+        return ResponseEntity.ok(ps.searchPrayerSummaries(query));
+    }
+
+    // Getting the top liked prayers
     @GetMapping("/prayerList")
     public Page<Prayer> getTopPrayers(
             @RequestParam(defaultValue = "0") int page,

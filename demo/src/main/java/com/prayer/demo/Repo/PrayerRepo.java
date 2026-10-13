@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.prayer.demo.dto.PrayerSummaryDTO;
 import com.prayer.demo.utility.Prayer;
@@ -15,5 +16,13 @@ public interface PrayerRepo extends JpaRepository<Prayer, Long> {
 
     @Query("select new com.prayer.demo.dto.PrayerSummaryDTO(p.number, p.name) from Prayer p")
     List<PrayerSummaryDTO> findAllPrayerSummaries();
+
+    @Query("""
+            select new com.prayer.demo.dto.PrayerSummaryDTO(p.number, p.name)
+            from Prayer p
+            where lower(p.name) like lower(concat('%', :query, '%'))
+            order by p.name asc
+            """)
+    List<PrayerSummaryDTO> searchPrayerSummaries(@Param("query") String query);
 
 }

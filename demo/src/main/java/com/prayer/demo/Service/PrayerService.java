@@ -40,6 +40,10 @@ public class PrayerService {
         return repo.findAllPrayerSummaries();
     }
 
+    public List<PrayerSummaryDTO> searchPrayerSummaries(String query) {
+        return repo.searchPrayerSummaries(query.trim());
+    }
+
     public Page<Prayer> getPrayers(Pageable pageable) {
         return repo.findAll(pageable);
     }
